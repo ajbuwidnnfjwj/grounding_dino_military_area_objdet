@@ -1,27 +1,20 @@
-# 훈련결과
+# vit, grounding dino, vision llm full path
 
-## Average Precision (AP)
-| Metric          | IoU Threshold | Area   | maxDets | Score     |
-| --------------- | ------------- | ------ | ------- | --------- |
-| **AP**          | 0.50:0.95     | all    | 100     | **0.834** |
-| **AP50**        | 0.50          | all    | 1000    | **0.989** |
-| **AP75**        | 0.75          | all    | 1000    | **0.952** |
-| **AP (small)**  | 0.50:0.95     | small  | 1000    | **0.719** |
-| **AP (medium)** | 0.50:0.95     | medium | 1000    | **0.841** |
-| **AP (large)**  | 0.50:0.95     | large  | 1000    | **0.943** |
+grounding dino의 호환성이 박살난 관계로 환경 설정이 조금 복잡함.
+python 3.9(맥북에 기본 탑재), venv 환경에서 구축
 
-## Average Recall (AR)
-| Metric          | IoU Threshold | Area   | maxDets | Score     |
-| --------------- | ------------- | ------ | ------- | --------- |
-| **AR@100**      | 0.50:0.95     | all    | 100     | **0.892** |
-| **AR@300**      | 0.50:0.95     | all    | 300     | **0.892** |
-| **AR@1000**     | 0.50:0.95     | all    | 1000    | **0.892** |
-| **AR (small)**  | 0.50:0.95     | small  | 1000    | **0.813** |
-| **AR (medium)** | 0.50:0.95     | medium | 1000    | **0.896** |
-| **AR (large)**  | 0.50:0.95     | large  | 1000    | **0.967** |
+mmdetection 깃 저장소 클론 <br>
+```git clone https://github.com/open-mmlab/mmdetection.git```
 
-## 특징
-- 전체 mAP: 0.834
-- small object: AP = 0.719, AR = 0.813
-- large object: AP = 0.943, AR = 0.967
-- AP와 AR 모두 객체를 검출하는데 부족함 없음. 라벨링 데이터의 중요성 시사
+mmdetection/requirements/multimodal.txt의 의존성 설치 <br>
+```pip install -r mmdetection/requirements/multimodal.txt```
+
+torch버전을 2.5로 내려야함. 보안정책이 2.6부터 강화되어서 복잡해짐 <br>
+```pip uninstll torch, torchvision``` <br>
+```pip install torch==2.5.0 torchvision==0.20.1```
+
+mmdetection 구동에 필요한 라이브러리들 설치 <br>
+```pip install -U openmim``` <br>
+```mim install mmengine "mmcv>=2.0.0" mmdet```
+
+여기까지 하면 의존성 설치 완료, 경로 잘 설정해서 vllm 파일 실행하면 댐
