@@ -18,3 +18,7 @@ mmdetection 구동에 필요한 라이브러리들 설치 <br>
 ```mim install mmengine "mmcv>=2.0.0" mmdet```
 
 여기까지 하면 의존성 설치 완료, 경로 잘 설정해서 vllm 파일 실행하면 댐
+
+중간중간 nktl뭐시기 하라고 할 수 있는데 <br>
+```python -c "import nltk; nltk.download('punkt')"``` <br>
+이거 한번 해보고 punkt말고 다른거 뜨면 그거만 punkt에서 바꿔서 실행하면 댐
